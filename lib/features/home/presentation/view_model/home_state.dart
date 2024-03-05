@@ -4,12 +4,12 @@ abstract class HomeState {
 
 class HomeIniailState extends HomeState {}
 
-class GetHistoricalPeriodsLoadingState extends HomeState {}
+class HomeLoadingState extends HomeState {}
 
-class GetHistoricalPeriodsSuccessState extends HomeState {}
+class HomeSuccessState extends HomeState {}
 
-class GetHistoricalPeriodsFailureState extends HomeState {
+class HomeFailureState extends HomeState {
   final String errorMessage;
 
-  GetHistoricalPeriodsFailureState({required this.errorMessage});
+  HomeFailureState({required this.errorMessage});
 }

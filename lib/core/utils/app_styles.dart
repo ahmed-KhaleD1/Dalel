@@ -176,7 +176,9 @@ abstract class AppStyles {
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
-  double width = MediaQuery.sizeOf(context).width;
+  double width = MediaQuery.of(context).orientation == Orientation.portrait
+      ? MediaQuery.sizeOf(context).width
+      : MediaQuery.sizeOf(context).height;
   double mobileFontScaleFactor = width / 400;
   double responsiveFontSize = mobileFontScaleFactor * fontSize;
   double upperLimit = fontSize * 1.2;

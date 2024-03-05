@@ -61,7 +61,7 @@ abstract class AppRouter {
     GoRoute(
       path: homeView,
       builder: (context, state) => BlocProvider<HomeCubit>(
-        create: (context) => HomeCubit()..getHistoricalPeriodData(),
+        create: (context) => HomeCubit()..getHomeData(),
         child: const HomeView(),
       ),
     )

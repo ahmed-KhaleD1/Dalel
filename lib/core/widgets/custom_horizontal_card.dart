@@ -25,7 +25,7 @@ class CustomHorizontalCard extends StatelessWidget {
           Expanded(
             child: Text(
               cardItem.name,
-              textAlign: TextAlign.start,
+              textAlign: TextAlign.center,
               style: AppStyles.poppinsMedium16(context),
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
