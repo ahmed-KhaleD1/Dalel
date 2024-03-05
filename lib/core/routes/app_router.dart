@@ -4,6 +4,7 @@ import 'package:dalel/features/auth/presentation/view/forgot_password_view.dart'
 import 'package:dalel/features/auth/presentation/view/sign_in_view.dart';
 import 'package:dalel/features/auth/presentation/view/sign_up_view.dart';
 import 'package:dalel/features/auth/presentation/view/verify_account_view.dart';
+import 'package:dalel/features/home/presentation/view_model/home_cubit.dart';
 import 'package:dalel/features/home/presentation/views/home_view.dart';
 import 'package:dalel/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:dalel/features/splash/presentation/view/splash_view.dart';
@@ -59,7 +60,10 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: homeView,
-      builder: (context, state) => const HomeView(),
+      builder: (context, state) => BlocProvider<HomeCubit>(
+        create: (context) => HomeCubit()..getHistoricalPeriodData(),
+        child: const HomeView(),
+      ),
     )
   ]);
 }

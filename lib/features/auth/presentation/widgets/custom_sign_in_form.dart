@@ -80,11 +80,11 @@ class CustomSignInForm extends StatelessWidget {
                     )
                   : CustomButton(
                       text: AppStrings.signIn,
-                      onPressed: () {
+                      onPressed: () async {
                         authCubit.updateAutoValidaionMode(
                             mode: AutovalidateMode.always);
                         if (authCubit.signinFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPassword();
+                          await authCubit.signInWithEmailAndPassword();
                         }
                       }),
               const SizedBox(

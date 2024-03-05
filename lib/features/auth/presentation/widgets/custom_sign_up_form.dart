@@ -98,12 +98,13 @@ class _CustomSignUpFormState extends State<CustomSignUpForm> {
                     : CustomButton(
                         text: AppStrings.signUp,
                         onPressed: authCubit.termsAndConditionCheckBoxValue
-                            ? () {
+                            ? () async {
                                 authCubit.updateAutoValidaionMode(
                                     mode: AutovalidateMode.always);
                                 if (authCubit.signupFormKey.currentState!
                                     .validate()) {
-                                  authCubit.createAccountWithEmailAndPassword();
+                                  await authCubit
+                                      .createAccountWithEmailAndPassword();
                                 }
                               }
                             : null),

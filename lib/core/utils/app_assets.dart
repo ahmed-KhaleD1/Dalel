@@ -13,17 +13,33 @@ class Assets {
   /// assets/images/icons/home.png
   static const String imagesIconsHome = "assets/images/icons/home.png";
 
+  /// Assets for imagesIconsHomeActive
+  /// assets/images/icons/home_active.png
+  static const String imagesIconsHomeActive = "assets/images/icons/home_active.png";
+
   /// Assets for imagesIconsProfile
   /// assets/images/icons/profile.png
   static const String imagesIconsProfile = "assets/images/icons/profile.png";
+
+  /// Assets for imagesIconsProfileActive
+  /// assets/images/icons/profile_active.png
+  static const String imagesIconsProfileActive = "assets/images/icons/profile_active.png";
 
   /// Assets for imagesIconsSearch
   /// assets/images/icons/search.png
   static const String imagesIconsSearch = "assets/images/icons/search.png";
 
+  /// Assets for imagesIconsSearchActive
+  /// assets/images/icons/search_active.png
+  static const String imagesIconsSearchActive = "assets/images/icons/search_active.png";
+
   /// Assets for imagesIconsShoppingCart
   /// assets/images/icons/shopping-cart.png
   static const String imagesIconsShoppingCart = "assets/images/icons/shopping-cart.png";
+
+  /// Assets for imagesIconsShoppingCartActive
+  /// assets/images/icons/shopping-cart_active.png
+  static const String imagesIconsShoppingCartActive = "assets/images/icons/shopping-cart_active.png";
 
   /// Assets for imagesIslamic
   /// assets/images/islamic.svg

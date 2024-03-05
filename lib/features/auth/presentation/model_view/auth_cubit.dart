@@ -1,3 +1,8 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dalel/constants.dart';
+import 'package:dalel/core/utils/firebase_keys.dart';
 import 'package:dalel/features/auth/presentation/model_view/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +20,13 @@ class AuthCubit extends Cubit<AuthState> {
   bool termsAndConditionCheckBoxValue = false;
   bool obscurePassword = true;
 
-  createAccountWithEmailAndPassword() async {
+  Future<void> createAccountWithEmailAndPassword() async {
     try {
       emit(SignUpLoadingState());
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email!, password: password!);
-      User? user = FirebaseAuth.instance.currentUser;
-      await user!.sendEmailVerification();
+      await addUserProfile();
+      await verifyEmail();
       emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       creatingAccountHandleException(e);
@@ -30,7 +35,12 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  signInWithEmailAndPassword() async {
+  Future<void> verifyEmail() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    await user!.sendEmailVerification();
+  }
+
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInLoadingState());
       await FirebaseAuth.instance
@@ -74,22 +84,22 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  updateTermsAndConditionCheckBox({required bool newValue}) {
+  void updateTermsAndConditionCheckBox({required bool newValue}) {
     termsAndConditionCheckBoxValue = newValue;
     emit(TermsAndConditionCheckBoxState());
   }
 
-  updateObscurePassword({required bool newValue}) {
+  void updateObscurePassword({required bool newValue}) {
     obscurePassword = newValue;
     emit(ObscurePasswordState());
   }
 
-  updateAutoValidaionMode({required AutovalidateMode mode}) {
+  void updateAutoValidaionMode({required AutovalidateMode mode}) {
     autoValidateMode = mode;
     emit(AutoValidationModeState());
   }
 
-  forgotPassword() async {
+  Future<void> forgotPassword() async {
     try {
       emit(ForgotPasswordLoadingState());
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email!);
@@ -97,5 +107,15 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(ForgotPasswordFailureState(errMessage: e.toString()));
     }
+  }
+
+  Future<void> addUserProfile() async {
+    CollectionReference users =
+        FirebaseFirestore.instance.collection(FirebaseKeys.users);
+    await users.add({
+      'email': email,
+      'firest_name': fristName,
+      'last_name': lastName,
+    });
   }
 }

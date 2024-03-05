@@ -1,11 +1,19 @@
+import 'package:dalel/core/functions/navigation.dart';
+import 'package:dalel/core/routes/app_router.dart';
 import 'package:dalel/core/utils/app_assets.dart';
 import 'package:dalel/core/utils/app_color.dart';
 import 'package:dalel/core/widgets/bottom_nav_bar_icon.dart';
 import 'package:flutter/material.dart';
 
-class CustomBottonNavBar extends StatelessWidget {
+class CustomBottonNavBar extends StatefulWidget {
   const CustomBottonNavBar({super.key});
 
+  @override
+  State<CustomBottonNavBar> createState() => _CustomBottonNavBarState();
+}
+
+class _CustomBottonNavBarState extends State<CustomBottonNavBar> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -21,13 +29,48 @@ class CustomBottonNavBar extends StatelessWidget {
               ),
             ),
           ),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              BottomNavBarItem(image: Assets.imagesIconsHome),
-              BottomNavBarItem(image: Assets.imagesIconsShoppingCart),
-              BottomNavBarItem(image: Assets.imagesIconsSearch),
-              BottomNavBarItem(image: Assets.imagesIconsProfile),
+              BottomNavBarItem(
+                inactiveImage: Assets.imagesIconsHome,
+                activeImage: Assets.imagesIconsHomeActive,
+                isActive: selectedIndex == 0,
+                onPressed: () {
+                  selectedIndex = 0;
+                  setState(() {
+                    customReplacementNavigate(context,
+                        path: AppRouter.homeView);
+                  });
+                },
+              ),
+              BottomNavBarItem(
+                inactiveImage: Assets.imagesIconsShoppingCart,
+                activeImage: Assets.imagesIconsShoppingCartActive,
+                isActive: selectedIndex == 1,
+                onPressed: () {
+                  selectedIndex = 1;
+                  setState(() {});
+                },
+              ),
+              BottomNavBarItem(
+                inactiveImage: Assets.imagesIconsSearch,
+                activeImage: Assets.imagesIconsSearchActive,
+                isActive: selectedIndex == 2,
+                onPressed: () {
+                  selectedIndex = 2;
+                  setState(() {});
+                },
+              ),
+              BottomNavBarItem(
+                inactiveImage: Assets.imagesIconsProfile,
+                activeImage: Assets.imagesIconsProfileActive,
+                isActive: selectedIndex == 3,
+                onPressed: () {
+                  selectedIndex = 3;
+                  setState(() {});
+                },
+              ),
             ],
           )),
     );

@@ -19,7 +19,8 @@ class CustomForgotPasswordForm extends StatelessWidget {
       listener: (context, state) {
         if (state is ForgotPasswordSuccessState) {
           customSnackBar(context,
-              message: 'Cheack your Email', backgroundColor: Colors.green);
+              message: 'Cheack your Email To Reset Your Password',
+              backgroundColor: Colors.green);
           customReplacementNavigate(context, path: AppRouter.signInView);
         } else if (state is ForgotPasswordFailureState) {
           customSnackBar(context,
@@ -46,13 +47,13 @@ class CustomForgotPasswordForm extends StatelessWidget {
                       color: AppColors.primaryColor,
                     )
                   : CustomButton(
-                      text: 'Send Verification Code',
-                      onPressed: () {
+                      text: 'Send ٌReset Passsword Link',
+                      onPressed: () async {
                         authCubit.updateAutoValidaionMode(
                             mode: AutovalidateMode.always);
                         if (authCubit.forgotPasswordFormKey.currentState!
                             .validate()) {
-                          authCubit.forgotPassword();
+                          await authCubit.forgotPassword();
                         }
                       },
                     )

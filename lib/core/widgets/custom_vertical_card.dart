@@ -37,7 +37,7 @@ class CustomVerticalCard extends StatelessWidget {
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              cardItem.title,
+              cardItem.name,
               style: AppStyles.poppinsMedium14(context),
             ),
           ),

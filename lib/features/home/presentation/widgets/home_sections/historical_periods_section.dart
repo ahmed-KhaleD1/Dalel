@@ -1,23 +1,22 @@
 import 'package:dalel/core/utils/app_strings.dart';
 import 'package:dalel/core/widgets/custom_header_text.dart';
-import 'package:dalel/core/models/historical_data_model.dart';
-import 'package:dalel/core/widgets/list_views/custom_horizontal_card_list_view.dart';
+import 'package:dalel/features/home/presentation/widgets/historical_periods.dart';
 import 'package:flutter/material.dart';
 
 class HistoricalperiodsSection extends StatelessWidget {
-  const HistoricalperiodsSection({super.key, required this.items});
-  final List<HistoricalDataModel> items;
+  const HistoricalperiodsSection({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomHeaderText(text: AppStrings.historicalPeriods),
-        const SizedBox(
+        CustomHeaderText(text: AppStrings.historicalPeriods),
+        SizedBox(
           height: 16,
         ),
-        CustomHorizontalCardListView(items: items),
-        const SizedBox(
+        HistoricalPeriods(),
+        SizedBox(
           height: 32,
         )
       ],
