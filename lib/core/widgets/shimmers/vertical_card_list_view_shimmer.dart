@@ -2,8 +2,8 @@ import 'package:dalel/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class VerticalCardListVieweShimmer extends StatelessWidget {
-  const VerticalCardListVieweShimmer({super.key});
+class VerticalCardListViewShimmer extends StatelessWidget {
+  const VerticalCardListViewShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

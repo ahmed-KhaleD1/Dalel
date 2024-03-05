@@ -3,6 +3,7 @@ abstract class FirebaseKeys {
   static const String users = 'users';
   static const String historicalPeriods = 'historical_periods';
   static const String historicalCharacter = 'historical_character';
+  static const String historicalSouvenirs = 'historical_souvenirs';
 
   //! docs
   static const String name = 'name';

@@ -1,5 +1,6 @@
 import 'package:dalel/features/home/presentation/widgets/home_sections/historical_characters_section.dart';
 import 'package:dalel/features/home/presentation/widgets/home_sections/historical_periods_section.dart';
+import 'package:dalel/features/home/presentation/widgets/home_sections/historical_souvenirs_section.dart';
 import 'package:dalel/features/home/presentation/widgets/home_sections/home_app_bar_section.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +20,7 @@ class HomeViewBody extends StatelessWidget {
               slivers: [
                 SliverToBoxAdapter(child: HistoricalperiodsSection()),
                 SliverToBoxAdapter(child: HistoricalCharacterSection()),
-                // SliverToBoxAdapter(
-                //     child: HistoricalSouvenirsSection(items: items))
+                SliverToBoxAdapter(child: HistoricalSouvenirsSection())
               ],
             ),
           ),

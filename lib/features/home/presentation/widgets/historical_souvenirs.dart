@@ -6,8 +6,8 @@ import 'package:dalel/features/home/presentation/view_model/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HistoricalCharacter extends StatelessWidget {
-  const HistoricalCharacter({super.key});
+class HistoricalSouvenirs extends StatelessWidget {
+  const HistoricalSouvenirs({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class HistoricalCharacter extends StatelessWidget {
         return state is HomeLoadingState
             ? const VerticalCardListViewShimmer()
             : CustomVerticalCardListView(
-                items: context.read<HomeCubit>().historicalCharacterList);
+                items: context.read<HomeCubit>().historicalSouvenirList);
       },
     );
   }
